@@ -32,10 +32,16 @@ export default function Navbar() {
           {/* Logo */}
           <a href="#" className="flex items-center gap-2 group">
             <div className="w-10 h-10 rounded-full bg-gradient-to-br from-amber-100 to-orange-100 flex items-center justify-center shadow-sm group-hover:shadow-md transition-shadow">
-              <span className="text-2xl">🐕</span>
+              <span className="text-2xl">
+                {" "}
+                <img
+                  src="src\assets\portfolio.png"
+                  className="h-6 w-6 object-contain"
+                ></img>
+              </span>
             </div>
             <span className="font-bold text-slate-900 hidden sm:inline">
-              Portfolio
+              Syafiq
             </span>
           </a>
 
