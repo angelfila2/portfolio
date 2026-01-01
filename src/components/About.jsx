@@ -11,18 +11,17 @@ const About = () => {
           About Me
         </h2>
 
-        <div className="flex flex-col md:flex-row gap-10 items-start">
-          {/* Image */}
-          <div className="w-72 h-72">
+        <div className="flex flex-col md:flex-row gap-8 md:gap-10 items-center md:items-stretch">
+          <div className="w-56 md:w-72 shrink-0">
             <img
               src={avatar}
               alt="Profile"
-              className="w-full h-full object-cover rounded-xl border border-slate-200"
+              className="w-full h-auto rounded-xl border border-slate-200"
             />
           </div>
 
-          {/* Text card matches image size */}
-          <div className="h-72 rounded-xl border border-slate-200 bg-white shadow-sm p-6 flex flex-col justify-center">
+          {/* Text card */}
+          <div className="w-full rounded-xl border border-slate-200 bg-white shadow-sm p-6 md:p-8 flex flex-col justify-center">
             <p className="text-base text-slate-700 leading-relaxed mb-4">
               I am Muhammad Syafiq Bin Wahinudin, a Singapore-based{" "}
               <span className="font-semibold text-slate-900">

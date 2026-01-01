@@ -42,7 +42,7 @@ const Projects = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
           {PROJECTS.map((e, index) => (
             <div
-              className="rounded-xl border border-slate-200 bg-blue-100 shadow-sm p-10 md:p-12 space-y-5"
+              className="rounded-xl border border-slate-200 shadow-sm p-10 md:p-12 space-y-5"
               key={index}
             >
               <div className="rounded-xl border border-slate-200 bg-white shadow-sm text-left p-3 ">

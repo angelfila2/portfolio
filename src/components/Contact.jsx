@@ -12,9 +12,9 @@ const Contact = () => {
         </h2>
 
         <p className="text-xl text-blue-100 mb-8 text-balance leading-relaxed">
-          I am currently seeking opportunities to contribute to innovative
-          projects and grow as a backend developer. Feel free to contact me
-          anytime!
+          I am currently seeking opportunities where I can contribute to
+          innovative projects and grow as a backend developer. Feel free to
+          reach out anytime.
         </p>
 
         <div className="flex flex-wrap gap-4 justify-center">

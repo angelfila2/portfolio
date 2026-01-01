@@ -40,7 +40,7 @@ const Hero = () => {
                 : "opacity-0 -translate-y-3 pointer-events-none"
             }`}
         >
-          <h2 className="text-14xl md:text-6xl font-bold text-slate-900 text-center">
+          <h2 className="text-5xl sm:text-6xl md:text-7xl font-bold text-slate-900 text-center">
             Hey there{" "}
             <span
               className={`inline-block origin-bottom-right ${
@@ -107,33 +107,33 @@ const Hero = () => {
           </div>
 
           {/* Socials */}
-          <div className="flex gap-4 justify-center">
+          <div className="flex gap-5 justify-center">
             <a
               href="https://github.com/angelfila2"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-3 rounded-full hover:bg-slate-100 transition"
+              className="p-4 sm:p-3 rounded-full hover:bg-slate-100 transition bg-gray-200"
               aria-label="GitHub"
             >
-              <Github className="h-5 w-5" />
+              <Github className="h-7 w-7 sm:h-5 sm:w-5" />
             </a>
 
             <a
               href="https://linkedin.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-3 rounded-full hover:bg-slate-100 transition"
+              className="p-4 sm:p-3 rounded-full hover:bg-slate-100 transition bg-gray-200"
               aria-label="LinkedIn"
             >
-              <Linkedin className="h-5 w-5" />
+              <Linkedin className="h-7 w-7 sm:h-5 sm:w-5" />
             </a>
 
             <a
               href="mailto:syafiq2023@gmail.com"
-              className="p-3 rounded-full hover:bg-slate-100 transition"
+              className="p-4 sm:p-3 rounded-full hover:bg-slate-100 transition bg-gray-200"
               aria-label="Email"
             >
-              <Mail className="h-5 w-5" />
+              <Mail className="h-7 w-7 sm:h-5 sm:w-5" />
             </a>
           </div>
         </div>
