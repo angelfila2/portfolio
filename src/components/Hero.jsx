@@ -119,7 +119,7 @@ const Hero = () => {
             </a>
 
             <a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/syafiq-wahinudin-305664267/"
               target="_blank"
               rel="noopener noreferrer"
               className="p-4 sm:p-3 rounded-full hover:bg-slate-100 transition bg-gray-200"
