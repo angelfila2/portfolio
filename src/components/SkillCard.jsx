@@ -35,6 +35,11 @@ const SKILLS = {
     label: "Postgres",
     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original-wordmark.svg",
   },
+
+  spring: {
+    label: "Spring Boot",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original-wordmark.svg",
+  },
 };
 
 const SkillCard = ({ language, size = "md" }) => {

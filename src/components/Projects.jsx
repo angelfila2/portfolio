@@ -16,6 +16,13 @@ const PROJECTS = [
     url: "https://github.com/angelfila2/LMSGuardian",
     technology: ["python", "postgres"],
   },
+  {
+    label: "ShopMore E-commerce Platform",
+    description:
+      "An e-commerce platform based off a famous e-commerce suite that offers a seamless shopping experience with features like user authentication, product browsing, shopping cart, and order management. Built using Java Spring Boot for the backend and PostgreSQL for data storage, ensuring robust performance and scalability.",
+    url: "https://github.com/angelfila2/eccomerce-site",
+    technology: ["java", "postgres", "spring"],
+  },
 ];
 
 const Projects = () => {

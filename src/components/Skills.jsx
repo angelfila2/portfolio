@@ -28,6 +28,7 @@ const Skills = () => {
 
             <SkillCard language="react" />
             <SkillCard language="node" />
+            <SkillCard language="spring" />
           </div>
 
           {/* DATABASE & TOOLS */}

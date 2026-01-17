@@ -72,22 +72,19 @@ const Hero = () => {
               <div className="absolute -bottom-1 -right-1 w-8 h-8 bg-blue-600 rounded-full shadow-md" />
             </div>
           </div>
-
           {/* Name */}
           <h2 className="text-xl md:text-2xl font-medium text-slate-600 mb-2 text-center">
             Hi, I'm Syafiq
           </h2>
-
           {/* Role */}
           <h1 className="text-5xl md:text-7xl font-bold text-slate-900 mb-6 text-center text-balance">
             Junior Software Engineer
           </h1>
-
           {/* Tagline */}
           <p className="text-xl md:text-2xl text-slate-600 mb-10 text-center text-balance leading-relaxed max-w-3xl">
-            Specializing in backend languages such as Java (Spring) and Javascript (Nodejs)
+            Specializing in backend languages such as Java (Spring) and
+            Javascript (Nodejs)
           </p>
-
           {/* CTA */}
           <div className="flex flex-wrap gap-4 justify-center mb-12">
             <a
@@ -104,7 +101,6 @@ const Hero = () => {
               Get In Touch
             </a>
           </div>
-
           {/* Socials */}
           <div className="flex gap-5 justify-center">
             <a

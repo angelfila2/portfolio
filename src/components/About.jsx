@@ -23,13 +23,9 @@ const About = () => {
           {/* Text card */}
           <div className="w-full rounded-xl border border-slate-200 bg-white shadow-sm p-6 md:p-8 flex flex-col justify-center">
             <p className="text-base text-slate-700 leading-relaxed mb-4">
-              I am Muhammad Syafiq Bin Wahinudin, a Singapore-based{" "}
-              <span className="font-semibold text-slate-900">
-                software engineer
-              </span>{" "}
-              and recent graduate specializing in{" "}
-              <span className="font-semibold text-slate-900">backend languages</span>
-              such as Javascript(NodeJs) and Java(Spring Boot).
+              I am <b>Muhammad Syafiq Bin Wahinudin</b>, a Singapore-based and
+              recent graduate specializing in backend languages such as
+              <b> Javascript (NodeJs) and Java (Spring Boot)</b>.
             </p>
 
             <p className="text-base text-slate-700 leading-relaxed">
@@ -39,7 +35,10 @@ const About = () => {
               <span className="font-medium text-slate-900">
                 actively seek feedback
               </span>
-              , and continuously refine my skills through real-world projects. These days, you can find me continously refining my skills and creating Java Spring boot projects in my github!
+              , and continuously refine my skills through real-world projects.
+              These days, you can find me continously refining my skills and
+              creating Java Spring boot projects which can be found in my
+              Github!
             </p>
           </div>
         </div>

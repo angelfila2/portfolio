@@ -23,8 +23,7 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "bg-white/95 backdrop-blur-sm shadow-md" : "bg-transparent"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-black text-white backdrop-blur-sm shadow-md"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4">
@@ -37,9 +36,7 @@ export default function Navbar() {
                 <img src={avatar} className="h-6 w-6 object-contain"></img>
               </span>
             </div>
-            <span className="font-bold text-slate-900 hidden sm:inline">
-              Syafiq
-            </span>
+            <span className="font-bold hidden sm:inline">Syafiq</span>
           </a>
 
           {/* Desktop Navigation */}
@@ -48,7 +45,7 @@ export default function Navbar() {
               <a
                 key={link.href}
                 href={link.href}
-                className="text-slate-700 hover:text-blue-600 font-medium transition-colors relative group"
+                className=" hover:text-blue-600 font-medium transition-colors relative group"
               >
                 {link.label}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all group-hover:w-full"></span>
