@@ -80,13 +80,12 @@ const Hero = () => {
 
           {/* Role */}
           <h1 className="text-5xl md:text-7xl font-bold text-slate-900 mb-6 text-center text-balance">
-            Junior Backend Developer
+            Junior Software Engineer
           </h1>
 
           {/* Tagline */}
           <p className="text-xl md:text-2xl text-slate-600 mb-10 text-center text-balance leading-relaxed max-w-3xl">
-            Building robust APIs and database solutions with clean, maintainable
-            code
+            Specializing in backend languages such as Java (Spring) and Javascript (Nodejs)
           </p>
 
           {/* CTA */}
