@@ -25,10 +25,11 @@ const About = () => {
             <p className="text-base text-slate-700 leading-relaxed mb-4">
               I am Muhammad Syafiq Bin Wahinudin, a Singapore-based{" "}
               <span className="font-semibold text-slate-900">
-                backend developer
+                software engineer
               </span>{" "}
               and recent graduate specializing in{" "}
-              <span className="font-semibold text-slate-900">Node.js</span>.
+              <span className="font-semibold text-slate-900">backend languages</span>
+              such as Javascript(NodeJs) and Java(Spring Boot).
             </p>
 
             <p className="text-base text-slate-700 leading-relaxed">
@@ -38,7 +39,7 @@ const About = () => {
               <span className="font-medium text-slate-900">
                 actively seek feedback
               </span>
-              , and continuously refine my skills through real-world projects.
+              , and continuously refine my skills through real-world projects. These days, you can find me continously refining my skills and creating Java Spring boot projects in my github!
             </p>
           </div>
         </div>
