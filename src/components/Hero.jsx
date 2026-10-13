@@ -128,7 +128,7 @@ const Hero = () => {
           </a>
 
           <a
-            href="mailto:syafiq2023@gmail.com"
+            href="mailto:syafiqwork2023@gmail.com"
             className="p-4 sm:p-3 rounded-full hover:bg-slate-100 transition bg-gray-200"
             aria-label="Email"
           >
