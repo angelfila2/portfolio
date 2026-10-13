@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import avatar from "../assets/portfolio.png";
+
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -23,20 +24,26 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-black text-white backdrop-blur-sm shadow-md"
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled
+          ? "bg-slate-950/90 backdrop-blur-md shadow-lg border-b border-slate-800"
+          : "bg-slate-950/70 backdrop-blur-sm"
+      } text-white`}
     >
-      <div className="max-w-7xl mx-auto px-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-2 group">
-            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-amber-100 to-orange-100 flex items-center justify-center shadow-sm group-hover:shadow-md transition-shadow">
-              <span className="text-2xl">
-                {" "}
-                <img src={avatar} className="h-6 w-6 object-contain"></img>
-              </span>
+          <a href="#" className="flex items-center gap-3 group">
+            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-amber-200 to-orange-300 flex items-center justify-center shadow-sm group-hover:scale-105 transition-transform">
+              <img
+                src={avatar}
+                alt="Syafiq Avatar"
+                className="h-6 w-6 object-contain"
+              />
             </div>
-            <span className="font-bold hidden sm:inline">Syafiq</span>
+            <span className="font-bold text-lg tracking-tight text-white group-hover:text-blue-400 transition-colors">
+              Syafiq
+            </span>
           </a>
 
           {/* Desktop Navigation */}
@@ -45,19 +52,19 @@ export default function Navbar() {
               <a
                 key={link.href}
                 href={link.href}
-                className=" hover:text-blue-600 font-medium transition-colors relative group"
+                className="text-slate-300 hover:text-white font-medium transition-colors relative group py-1"
               >
                 {link.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all group-hover:w-full"></span>
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-500 transition-all duration-300 group-hover:w-full"></span>
               </a>
             ))}
           </div>
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 rounded-md hover:bg-slate-100 transition"
+            className="md:hidden p-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/80 transition"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="Toggle menu"
+            aria-label="Toggle navigation menu"
           >
             {isMobileMenuOpen ? (
               <X className="h-6 w-6" />
@@ -67,23 +74,20 @@ export default function Navbar() {
           </button>
         </div>
 
-        {/* Mobile Menu */}
-        {/* Mobile Menu */}
+        {/* Mobile Dropdown Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden absolute top-full left-0 right-0 bg-white shadow-lg border-t border-slate-200">
-            <div className="max-w-7xl mx-auto px-4 py-4">
-              <div className="flex flex-col gap-3">
-                {navLinks.map((link) => (
-                  <a
-                    key={link.href}
-                    href={link.href}
-                    className="rounded-lg px-4 py-3 text-slate-700 font-medium hover:bg-slate-100 hover:text-blue-600 transition"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    {link.label}
-                  </a>
-                ))}
-              </div>
+          <div className="md:hidden border-t border-slate-800 bg-slate-950/95 backdrop-blur-xl animate-in slide-in-from-top-2 duration-200">
+            <div className="flex flex-col gap-2 py-4 px-2">
+              {navLinks.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="rounded-lg px-4 py-3 text-slate-200 font-medium hover:bg-slate-800/60 hover:text-blue-400 transition"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  {link.label}
+                </a>
+              ))}
             </div>
           </div>
         )}
