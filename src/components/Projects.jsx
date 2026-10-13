@@ -1,71 +1,90 @@
 import SkillCard from "./SkillCard";
-import { HiOutlineExternalLink } from "react-icons/hi";
+import { Github, ExternalLink } from "lucide-react";
 
 const PROJECTS = [
   {
-    label: "Room Booking",
+    label: "Room Booking MVP",
     description:
-      "A room booking MVP designed to improve operational efficiency by simplifying reservations, preventing double bookings through conflict detection, and offering clear daily and weekly overviews for effective space management.",
+      "A room booking system designed to streamline reservations, eliminate double-bookings with automated conflict detection, and provide clear calendar views for operational space management.",
     url: "https://github.com/angelfila2/room-booking",
     technology: ["react", "node", "mongodb"],
   },
   {
-    label: "LMS Content Scraper & URL Reputation Scanner",
+    label: "LMS Security & URL Scanner",
     description:
-      "A backend-focused LMS security tool that automatically scans course content, extracts external links, and evaluates their safety using multiple reputation and threat intelligence APIs. Built in response to a real incident involving compromised legacy links, the system enables proactive detection of malicious or inappropriate content within Moodle.",
+      "A backend security tool built in response to a real incident with compromised legacy links in Moodle. Automatically scans course content, extracts external URLs, and verifies reputation via threat intelligence APIs.",
     url: "https://github.com/angelfila2/LMSGuardian",
     technology: ["python", "postgres"],
   },
   {
     label: "ShopMore E-commerce Platform",
     description:
-      "An e-commerce platform based off a famous e-commerce suite that offers a seamless shopping experience with features like user authentication, product browsing, shopping cart, and order management. Built using Java Spring Boot for the backend and PostgreSQL for data storage, ensuring robust performance and scalability.",
+      "A full-featured e-commerce backend and shopping platform with user authentication, product catalog browsing, cart operations, and transactional order management built with high reliability.",
     url: "https://github.com/angelfila2/eccomerce-site",
-    technology: ["java", "postgres", "spring"],
+    technology: ["java", "spring", "postgres"],
   },
 ];
 
 const Projects = () => {
   return (
-    <section
-      id="projects"
-      className="min-h-screen container mx-auto px-4 py-24 md:py-32"
-    >
-      <div className="max-w-5xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-10 text-center">
-          Featured Projects
-        </h2>
+    <section id="projects" className="container mx-auto px-4 py-20 md:py-28">
+      <div className="max-w-6xl mx-auto">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-3">
+            Featured Projects
+          </h2>
+          <p className="text-slate-600 text-lg max-w-2xl mx-auto">
+            Practical backend systems, security tools, and applications I've
+            built.
+          </p>
+        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* Balanced 3-column layout on large screens */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
           {PROJECTS.map((project, index) => (
             <div
               key={index}
-              className="relative rounded-xl border border-slate-200 shadow-sm p-10 md:p-12 bg-white"
+              className="flex flex-col justify-between rounded-2xl border border-slate-200 shadow-sm p-6 sm:p-8 bg-white hover:shadow-md hover:border-slate-300 transition-all duration-200 group"
             >
-              {/* External link icon */}
-              <a
-                href={project.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="absolute top-4 right-4 text-slate-400 hover:text-slate-900 transition"
-                aria-label="Open project"
-              >
-                <HiOutlineExternalLink className="w-6 h-6" />
-              </a>
+              {/* Card Header & Body */}
+              <div>
+                <div className="flex items-start justify-between gap-2 mb-4">
+                  <h3 className="font-bold text-xl text-slate-900 group-hover:text-blue-600 transition-colors">
+                    {project.label}
+                  </h3>
+                  <a
+                    href={project.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-slate-400 hover:text-slate-900 transition p-1"
+                    aria-label={`Open ${project.label} on GitHub`}
+                  >
+                    <ExternalLink className="w-5 h-5" />
+                  </a>
+                </div>
 
-              {/* Card content */}
-              <div className="space-y-5">
-                <h2 className="font-bold text-2xl">{project.label}</h2>
-
-                <p className="text-slate-700 leading-relaxed">
+                <p className="text-slate-600 text-sm sm:text-base leading-relaxed mb-6">
                   {project.description}
                 </p>
+              </div>
 
-                <div className="flex flex-wrap gap-3 pt-2">
+              {/* Card Footer: Tech tags + Visible Code Link */}
+              <div className="pt-4 border-t border-slate-100 flex flex-col gap-4">
+                <div className="flex flex-wrap gap-2">
                   {project.technology.map((tech, techIndex) => (
                     <SkillCard language={tech} key={techIndex} size="sm" />
                   ))}
                 </div>
+
+                <a
+                  href={project.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-sm font-semibold text-slate-700 hover:text-blue-600 transition-colors pt-1"
+                >
+                  <Github className="w-4 h-4" />
+                  <span>View Repository</span>
+                </a>
               </div>
             </div>
           ))}
