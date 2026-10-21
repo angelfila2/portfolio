@@ -82,8 +82,8 @@ const Hero = () => {
 
         {/* Tagline */}
         <p className="text-xl md:text-2xl text-slate-600 mb-10 text-center text-balance leading-relaxed max-w-3xl">
-          Specializing in backend languages such as Java (Spring) and Javascript
-          (Nodejs)
+          I enjoy building backend applications with Python and Java,
+          and I’m currently learning how to bring AI into them.
         </p>
 
         {/* CTA */}
