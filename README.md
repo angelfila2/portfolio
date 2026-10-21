@@ -44,7 +44,7 @@ keeps direct links and refreshes compatible with GitHub Pages static hosting.
 The Vite base remains `/portfolio/`.
 
 - `src/data/projects.js`: project descriptions, technology lists, gallery assets,
-  decisions, limitations and source links.
+  key features and repository links.
 - `src/pages/ProjectPage.jsx`: the reusable case-study layout.
 - `src/components/ScreenshotGallery.jsx`: manual arrows, keyboard navigation,
   thumbnails, captions and full-size image links; no automatic playback.
@@ -58,8 +58,7 @@ product screenshots can be added to their `gallery` arrays when available. No
 screenshots or live deployment claims were invented for those projects. The room
 booking stack and future calendar scope were corrected against its public README.
 The ShopMore repository is not publicly accessible, so its entry retains only the
-existing portfolio summary. Regression results are explicitly labelled as small
-synthetic evaluations, not production accuracy.
+existing portfolio summary. Detailed engineering/evaluation notes remain in the project repositories.
 
 ### Local checks and publishing
 
@@ -76,3 +75,9 @@ built `dist/` directory there; commit source changes to `main` separately. New
 assets use `import.meta.env.BASE_URL` so images resolve under `/portfolio/`.
 GitHub Pages serves this portfolio; it does not run SupportFlow's FastAPI/Ollama
 backend.
+
+
+Project detail pages follow a short format: project photos, an overview, key
+features and technologies used. SupportFlow has a four-image gallery. Other
+projects show a short availability note until real screenshots are supplied;
+workflow illustrations on homepage cards are not presented as product photos.

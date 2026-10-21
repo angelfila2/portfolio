@@ -1,86 +1,63 @@
-const supportImage = (name) => `${import.meta.env.BASE_URL}projects/supportflow/${name}`;
+const supportImage = name => `${import.meta.env.BASE_URL}projects/supportflow/${name}`;
 
 // Keep project content here; all cards share one case-study page.
-export const projects = [
-  {
-    slug: "supportflow", title: "SupportFlow", category: "AI engineering / Full stack",
-    tagline: "A support inbox with an AI agent that knows when to hand over.",
-    summary: "AI-assisted ticket triage with grounded FAQ replies, critical-incident escalation and a human review workspace.",
-    stack: ["Python", "FastAPI", "Ollama", "ChromaDB", "SQLite", "React"],
-    repository: "https://github.com/angelfila2/support-triage",
-    cover: supportImage("inbox.png"), mascot: supportImage("corgi.png"),
-    role: "Personal project · AI pipeline, backend and helpdesk interface",
-    problem: "Support requests arrive with different levels of urgency and enough ambiguity to make automatic replies risky. I wanted to explore how a local language model could help with routine questions while leaving critical incidents and unsupported actions to a person.",
-    approach: "The pipeline retrieves relevant FAQ guidance, asks the model for a structured assessment, then applies application-owned routing rules. Automatic replies use original FAQ passages. The interface exposes the request, assessment and source evidence so an agent can review the outcome.",
-    gallery: [
-      { image: supportImage("inbox.png"), title: "One queue, clear next steps", caption: "Search and filter tickets by category, processing state, priority and review status. Screenshots use an isolated sample database." },
-      { image: supportImage("intake.png"), title: "From request to AI triage", caption: "Type a single-issue request or upload an email, then submit it through the same triage pipeline." },
-      { image: supportImage("assessment.png"), title: "A decision you can inspect", caption: "The request and suggested FAQ reply sit beside the AI assessment. Review, response notes and saved decision evidence remain available in ticket details." },
-      { image: supportImage("insights.png"), title: "See the whole queue", caption: "Classification and routing insights aggregate the full database rather than just the visible page of tickets." },
-    ],
-    features: [
-      ["Grounded retrieval", "Persistent Chroma embeddings and a relevance threshold keep unrelated FAQ content out of the response context."],
-      ["Structured assessment", "One model assessment returns intent, severity, confidence and answerability. Malformed output falls back to escalation."],
-      ["Policy before permission", "SEV1/SEV2 incidents always escalate. Human-only actions are blocked even when a model suggests an automatic reply."],
-      ["Safe reply boundary", "The responder selects complete FAQ passages; application code returns the original text and requires the documented next step."],
-      ["Recoverable processing", "SQLite preserves intake before inference. Leased attempts support same-ID retries and reject expired results."],
-      ["Human oversight", "Operators review classifications, record responses and inspect saved source passages, model metadata and code hashes."],
-    ],
-    workflow: ["Save the request", "Retrieve FAQ context", "Assess with the LLM", "Enforce routing policy", "Reply or escalate"],
-    decisions: [
-      ["A bounded pipeline", "I kept the agent focused on one issue per ticket and four FAQ capabilities. Unsupported requests escalate rather than stretching the model’s permissions."],
-      ["Local inference", "Ollama runs classification and reply selection locally. The application still needs the configured models and a working backend."],
-      ["SQLite without an ORM", "Python’s sqlite3 keeps the persistence layer approachable while transactions protect intake, reviews and retry claims."],
-      ["Evidence with the decision", "Each attempt can retain the retrieved content and version metadata, making the result easier to inspect after code or FAQ changes."],
-    ],
-    validation: "The cleaned backend suite passes 221 automated tests. A 24-case synthetic evaluation was repeated twice after fixes: intent, routing and severity matched all 48 expectations, and 18 eligible replies passed exact-quotation and required-fact checks. These are inspected regression fixtures with agent-authored labels, not a production accuracy estimate.",
-    limitations: "Confidence is model-provided, not calibrated. FAQ and safety-policy coverage are limited; independent human-labelled evaluation is still needed. GitHub Pages hosts this case study, while FastAPI, SQLite and Ollama require a separate runtime for a live service.",
-    learning: "The biggest lesson was that valid JSON and a relevant document do not guarantee a useful answer. Testing exposed replies that quoted a troubleshooting introduction without its steps. Keeping procedures together and requiring the documented next action made the response boundary more useful and testable.",
-    sources: [{ label: "Source code", url: "https://github.com/angelfila2/support-triage" }],
-  },
-  {
-    slug: "room-booking", title: "Room Booking MVP", category: "Backend engineering",
-    tagline: "Replacing spreadsheet coordination with backend booking rules.",
-    summary: "A room reservation service inspired by the scheduling conflicts I encountered when bookings were managed in a shared spreadsheet.",
-    stack: ["React", "Node.js", "Express", "Prisma", "PostgreSQL"],
-    repository: "https://github.com/angelfila2/room-booking", role: "Personal project · Backend-focused application",
-    problem: "At a previous job, shared spreadsheets made room reservations difficult to coordinate. Overlapping entries and manual updates could lead to scheduling conflicts.",
-    approach: "The service models room reservations through REST APIs and keeps booking rules in the backend, with Prisma and PostgreSQL providing structured persistence.",
-    features: [["Reservation APIs", "Create and manage bookings through a RESTful backend."], ["Conflict detection", "Check overlapping time slots as part of booking validation."], ["Persistent records", "Store bookings in PostgreSQL using Prisma for database access."], ["Service-layer rules", "Keep booking decisions separate from HTTP request handling."]],
-    workflow: ["Choose a room and time", "Validate the request", "Check for overlaps", "Store the reservation"],
-    decisions: [["Rules in the backend", "Availability checks belong with the service handling reservations so the client is not the only place enforcing a booking rule."], ["Relational storage", "Rooms, reservations and time ranges benefit from a structured database model."]],
-    limitations: "Calendar/week views and a TypeScript migration are listed as future enhancements in the repository, rather than completed functionality. No new benchmark or concurrency guarantee is claimed here.",
-    learning: "A familiar workplace problem made REST API design, validation and data modelling easier to connect to an operational need.",
-    sources: [{label: "Repository and project notes", url: "https://github.com/angelfila2/room-booking"}],
-  },
-  {
-    slug: "lms-guardian", title: "LMS Guardian", category: "Security / Backend engineering",
-    tagline: "Helping educators inspect the external links in learning content.",
-    summary: "A team-based final-year project combining URL analysis, security API integrations and organised reporting for learning-management content.",
-    stack: ["Python", "FastAPI", "PostgreSQL", "Security APIs"], repository: "https://github.com/angelfila2/LMSGuardian",
-    role: "Undergraduate team project · Lead software developer and primary contributor",
-    problem: "Learning materials can link to external resources that change or become unsafe over time. Course teams need a way to inspect those links and organise the findings.",
-    approach: "The system brings URL validation, multiple threat-intelligence integrations, content analysis and report generation into one backend workflow.",
-    features: [["URL inspection", "Clean and validate external links before analysis."], ["Security integrations", "Combine threat-intelligence providers and content-analysis services."], ["Organised persistence", "Keep course, session and analysis information in a structured database."], ["Readable reports", "Generate Word reports that group findings for course review."]],
-    workflow: ["Collect external links", "Validate URLs", "Analyse security/content", "Store findings", "Generate a report"],
-    decisions: [["Multiple providers", "Different services contribute different security signals; quota and failure handling matter when coordinating them."], ["Reporting for reviewers", "Findings need to be organised around the course material people are reviewing, not just raw API responses."]],
-    limitations: "Provider availability, quotas and changing threat intelligence affect results. This case study does not repeat unverified accuracy or API-call reduction claims from the repository.",
-    learning: "The project connected architecture and API integration work with the practical need to turn analysis results into something a reviewer can act on.",
-    sources: [{label: "Repository and contribution notes", url: "https://github.com/angelfila2/LMSGuardian"}],
-  },
-  {
-    slug: "shopmore", title: "ShopMore", category: "Backend engineering",
-    tagline: "Connecting the core flows of an e-commerce application.",
-    summary: "An e-commerce project covering user authentication, product browsing, cart operations and order management.",
-    stack: ["Java", "Spring", "PostgreSQL"], role: "Personal project · E-commerce backend",
-    problem: "An online store needs a coherent path from browsing products to maintaining a cart and creating an order.",
-    approach: "This project explores those backend flows with Java, Spring and a relational database, as described in my original portfolio.",
-    features: [["Accounts", "User authentication for the shopping workflow."], ["Product browsing", "A catalogue of products customers can explore."], ["Cart operations", "Manage the items selected before ordering."], ["Order management", "Connect the cart workflow to persisted orders."]],
-    workflow: ["Sign in", "Browse products", "Manage the cart", "Create an order"],
-    decisions: [],
-    limitations: "The original repository link is not publicly accessible at the time of this update. This page retains the existing portfolio summary and does not claim new testing results or deployment availability.",
-    learning: "The project brings common application concerns—accounts, data relationships and request handling—into a single end-to-end domain.",
-  },
-];
-
-export const findProject = (slug) => projects.find((project) => project.slug === slug);
+export const projects = [{
+  slug: "supportflow",
+  description: "SupportFlow is an AI-assisted helpdesk that helps sort incoming support tickets. Users can type a request or upload an email, and the system identifies the issue, assigns a severity and decides whether to suggest a FAQ-based reply or pass it to a person. The dashboard brings ticket history, AI assessments, human reviews and reporting together in one place.",
+  title: "SupportFlow",
+  category: "AI engineering / Full stack",
+  summary: "AI-assisted ticket triage with grounded FAQ replies, critical-incident escalation and a human review workspace.",
+  stack: ["Python", "FastAPI", "Ollama", "ChromaDB", "SQLite", "React"],
+  repository: "https://github.com/angelfila2/support-triage",
+  cover: supportImage("inbox.png"),
+  mascot: supportImage("corgi.png"),
+  gallery: [{
+    image: supportImage("inbox.png"),
+    title: "One queue, clear next steps",
+    caption: "Search and filter tickets by category, processing state, priority and review status. Screenshots use an isolated sample database."
+  }, {
+    image: supportImage("intake.png"),
+    title: "From request to AI triage",
+    caption: "Type a single-issue request or upload an email, then submit it through the same triage pipeline."
+  }, {
+    image: supportImage("assessment.png"),
+    title: "A decision you can inspect",
+    caption: "The request and suggested FAQ reply sit beside the AI assessment. Review, response notes and saved decision evidence remain available in ticket details."
+  }, {
+    image: supportImage("insights.png"),
+    title: "See the whole queue",
+    caption: "Classification and routing insights aggregate the full database rather than just the visible page of tickets."
+  }],
+  features: [["FAQ-based replies", "Suggest replies using relevant guidance from the support knowledge base."], ["AI ticket triage", "Identify the type of issue and its severity to help decide the next step."], ["Automatic escalation", "Send critical incidents and requests the AI cannot safely answer to a person."], ["Manual and email entry", "Create a ticket by typing a request or uploading an email file."], ["Ticket history and retries", "Search and filter saved tickets, view earlier attempts and retry failed processing."], ["Human review", "Review AI decisions, correct classifications and record agent response notes."]],
+  workflow: ["Save the request", "Retrieve FAQ context", "Assess with the LLM", "Enforce routing policy", "Reply or escalate"]
+}, {
+  slug: "room-booking",
+  description: "A room booking application inspired by the difficulties of managing reservations in a shared spreadsheet. It provides a structured way to manage room bookings, with backend validation to check for overlapping time slots and PostgreSQL to store reservation records.",
+  title: "Room Booking MVP",
+  category: "Backend engineering",
+  summary: "A room reservation service inspired by the scheduling conflicts I encountered when bookings were managed in a shared spreadsheet.",
+  stack: ["React", "Node.js", "Express", "Prisma", "PostgreSQL"],
+  repository: "https://github.com/angelfila2/room-booking",
+  features: [["Reservation APIs", "Create and manage bookings through a RESTful backend."], ["Conflict detection", "Check overlapping time slots as part of booking validation."], ["Persistent records", "Store bookings in PostgreSQL using Prisma for database access."], ["Service-layer rules", "Keep booking decisions separate from HTTP request handling."]],
+  workflow: ["Choose a room and time", "Validate the request", "Check for overlaps", "Store the reservation"]
+}, {
+  slug: "lms-guardian",
+  description: "LMS Guardian is a team-based undergraduate final-year project for reviewing external links in learning-management content. It combines URL validation, threat-intelligence APIs, content analysis and reporting to help course teams inspect potentially unsafe resources. I worked as the lead software developer and primary contributor.",
+  title: "LMS Guardian",
+  category: "Security / Backend engineering",
+  summary: "A team-based final-year project combining URL analysis, security API integrations and organised reporting for learning-management content.",
+  stack: ["Python", "FastAPI", "PostgreSQL", "Security APIs"],
+  repository: "https://github.com/angelfila2/LMSGuardian",
+  features: [["URL inspection", "Clean and validate external links before analysis."], ["Security integrations", "Combine threat-intelligence providers and content-analysis services."], ["Organised persistence", "Keep course, session and analysis information in a structured database."], ["Readable reports", "Generate Word reports that group findings for course review."]],
+  workflow: ["Collect external links", "Validate URLs", "Analyse security/content", "Store findings", "Generate a report"]
+}, {
+  slug: "shopmore",
+  description: "ShopMore is an e-commerce project built with Java, Spring and PostgreSQL. It brings together user authentication, product browsing, cart operations and order management to explore the backend flows behind an online store.",
+  title: "ShopMore",
+  category: "Backend engineering",
+  summary: "An e-commerce project covering user authentication, product browsing, cart operations and order management.",
+  stack: ["Java", "Spring", "PostgreSQL"],
+  features: [["Accounts", "User authentication for the shopping workflow."], ["Product browsing", "A catalogue of products customers can explore."], ["Cart operations", "Manage the items selected before ordering."], ["Order management", "Connect the cart workflow to persisted orders."]],
+  workflow: ["Sign in", "Browse products", "Manage the cart", "Create an order"]
+}];
+export const findProject = slug => projects.find(project => project.slug === slug);
