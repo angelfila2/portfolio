@@ -1,4 +1,4 @@
-const supportImage = name => `${import.meta.env.BASE_URL}projects/supportflow/${name}`;
+const supportImage = name => `${import.meta.env.BASE_URL}projects/supportflow/${name}?v=d717afb`;
 
 // Keep project content here; all cards share one case-study page.
 export const projects = [{
