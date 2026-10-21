@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { ArrowLeft, ArrowRight, Github, Layers3 } from "lucide-react";
 import { Link, useParams } from "react-router-dom";
+import SkillCard from "../components/SkillCard";
 import ScreenshotGallery from "../components/ScreenshotGallery";
 import { findProject, projects } from "../data/projects";
 
@@ -52,7 +53,7 @@ export default function ProjectPage() {
 
       <section className="project-detail-section" aria-labelledby="technologies-title">
         <h2 id="technologies-title">Technologies used</h2>
-        <ul className="project-technologies">{project.stack.map((tech) => <li key={tech}>{tech}</li>)}</ul>
+        <ul className="project-technologies">{project.stack.map((tech) => <li key={tech}><SkillCard language={tech} /></li>)}</ul>
       </section>
 
       <Link to={`/projects/${next.slug}`} className="case-next"><span>UP NEXT<strong>{next.title}</strong></span><ArrowRight size={26} /></Link>

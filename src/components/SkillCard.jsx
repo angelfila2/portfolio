@@ -1,4 +1,13 @@
+import { Code2, ShieldCheck } from "lucide-react";
+
 const SKILLS = {
+  fastapi: { label: "FastAPI", icon: `${import.meta.env.BASE_URL}technology-icons/fastapi.svg` },
+  sqlite: { label: "SQLite", icon: `${import.meta.env.BASE_URL}technology-icons/sqlite.svg` },
+  express: { label: "Express", icon: `${import.meta.env.BASE_URL}technology-icons/express.svg` },
+  prisma: { label: "Prisma", icon: `${import.meta.env.BASE_URL}technology-icons/prisma.svg` },
+  ollama: { label: "Ollama", icon: `${import.meta.env.BASE_URL}technology-icons/ollama.png` },
+  chromadb: { label: "ChromaDB", icon: `${import.meta.env.BASE_URL}technology-icons/chromadb.png` },
+  securityapis: { label: "Security APIs", svg: <ShieldCheck className="w-full h-full text-slate-600" /> },
   javascript: {
     label: "JavaScript",
     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg",
@@ -58,8 +67,12 @@ const SKILLS = {
 };
 
 const SkillCard = ({ language, size = "md" }) => {
-  const skill = SKILLS[language];
-  if (!skill) return null;
+  const key = language.toLowerCase().replace(/[^a-z0-9]/g, "");
+  const aliases = { nodejs: "node", postgresql: "postgres", springboot: "spring" };
+  const skill = SKILLS[aliases[key] || key] || {
+    label: language,
+    svg: <Code2 className="w-full h-full text-slate-600" />,
+  };
 
   const sizeStyles =
     size === "sm"
