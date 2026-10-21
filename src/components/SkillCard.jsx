@@ -1,6 +1,7 @@
 import { Code2, ShieldCheck } from "lucide-react";
 
 const SKILLS = {
+  tailwindcss: { label: "Tailwind CSS", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" },
   fastapi: { label: "FastAPI", icon: `${import.meta.env.BASE_URL}technology-icons/fastapi.svg` },
   sqlite: { label: "SQLite", icon: `${import.meta.env.BASE_URL}technology-icons/sqlite.svg` },
   express: { label: "Express", icon: `${import.meta.env.BASE_URL}technology-icons/express.svg` },

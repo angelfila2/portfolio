@@ -1,5 +1,7 @@
 const supportImage = name => `${import.meta.env.BASE_URL}projects/supportflow/${name}?v=d717afb`;
 
+const roomImage = name => `${import.meta.env.BASE_URL}projects/room-booking/${name}?v=e3b4dd3`;
+
 // Keep project content here; all cards share one case-study page.
 export const projects = [{
   slug: "supportflow",
@@ -36,14 +38,32 @@ export const projects = [{
   workflow: ["Save the request", "Retrieve FAQ context", "Assess incident facts", "Apply severity and routing rules", "Suggest a reply or escalate", "Record helpdesk updates"]
 }, {
   slug: "room-booking",
-  description: "A room booking application inspired by the difficulties of managing reservations in a shared spreadsheet. It provides a structured way to manage room bookings, with backend validation to check for overlapping time slots and PostgreSQL to store reservation records.",
+  description: "A room booking MVP inspired by the difficulties of managing reservations in a shared spreadsheet at work. It provides a daily view of five rooms, with forms to create, edit and delete bookings. The Express backend checks for overlapping time slots when a booking is created. This version uses in-memory sample data, so reservations reset when the server restarts. I recently polished the interface while keeping the original room-card layout and backend implementation.",
   title: "Room Booking MVP",
   category: "Backend engineering",
-  summary: "A room reservation service inspired by the scheduling conflicts I encountered when bookings were managed in a shared spreadsheet.",
-  stack: ["React", "Node.js", "Express", "Prisma", "PostgreSQL"],
+  summary: "A room reservation prototype inspired by scheduling conflicts in a shared spreadsheet, with daily room views and booking management.",
+  stack: ["JavaScript", "React", "Node.js", "Express", "Tailwind CSS"],
   repository: "https://github.com/angelfila2/room-booking",
-  features: [["Reservation APIs", "Create and manage bookings through a RESTful backend."], ["Conflict detection", "Check overlapping time slots as part of booking validation."], ["Persistent records", "Store bookings in PostgreSQL using Prisma for database access."], ["Service-layer rules", "Keep booking decisions separate from HTTP request handling."]],
-  workflow: ["Choose a room and time", "Validate the request", "Check for overlaps", "Store the reservation"]
+  cover: roomImage("dashboard.png"),
+  gallery: [{
+    image: roomImage("dashboard.png"),
+    title: "A clear view of the day's rooms",
+    caption: "Browse a date, see room locations and scheduled bookings, and distinguish booked rooms from rooms with no reservations. Screenshots use synthetic local demo bookings."
+  }, {
+    image: roomImage("new-booking.png"),
+    title: "Create a room reservation",
+    caption: "Choose from all five rooms, enter a course or meeting name, and set the reservation date and time."
+  }, {
+    image: roomImage("booking-details.png"),
+    title: "Manage an existing booking",
+    caption: "Open a reservation to inspect its details, update its name or time, or delete it. The original create/edit workflow is preserved."
+  }, {
+    image: roomImage("booking-conflict.png"),
+    title: "Clear feedback for a conflicting slot",
+    caption: "When a new reservation overlaps an existing booking, the backend rejects it and the dialog displays a readable error. Edit-time overlap validation remains a follow-up."
+  }],
+  features: [["Daily room view", "Browse reservations by date across five rooms and their locations."], ["Booking management", "Create, inspect, edit and delete room reservations through the UI and Express APIs."], ["Create-time conflict checks", "Reject new bookings that overlap an existing reservation in the same room."], ["Readable form feedback", "Show booking errors inside the dialog and validate time order in the frontend."], ["Original architecture preserved", "Keep the service-layer booking logic and in-memory storage while improving the interface."]],
+  workflow: ["Choose a date and room", "Enter reservation details", "Check create-time overlaps", "Add the reservation to the daily view"]
 }, {
   slug: "lms-guardian",
   description: "LMS Guardian is a team-based undergraduate final-year project for reviewing external links in learning-management content. It combines URL validation, threat-intelligence APIs, content analysis and reporting to help course teams inspect potentially unsafe resources. I worked as the lead software developer and primary contributor.",
