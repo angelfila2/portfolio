@@ -35,3 +35,44 @@ Make sure you have [Node.js](https://nodejs.org/) (v18 or higher recommended) an
 node -v
 npm -v
 ```
+
+
+## Project case studies
+
+Project cards now open `/portfolio/#/projects/<slug>`. React Router's HashRouter
+keeps direct links and refreshes compatible with GitHub Pages static hosting.
+The Vite base remains `/portfolio/`.
+
+- `src/data/projects.js`: project descriptions, technology lists, gallery assets,
+  decisions, limitations and source links.
+- `src/pages/ProjectPage.jsx`: the reusable case-study layout.
+- `src/components/ScreenshotGallery.jsx`: manual arrows, keyboard navigation,
+  thumbnails, captions and full-size image links; no automatic playback.
+- `src/pages/HomePage.jsx`: homepage content and section scroll restoration.
+- `src/project-pages.css`: case-study and gallery styling, including mobile layouts.
+- `public/projects/supportflow/`: real screenshots captured from a local instance
+  using an isolated synthetic ticket database, plus the corgi mascot.
+
+SupportFlow is the featured case study. Other projects share the detail layout;
+product screenshots can be added to their `gallery` arrays when available. No
+screenshots or live deployment claims were invented for those projects. The room
+booking stack and future calendar scope were corrected against its public README.
+The ShopMore repository is not publicly accessible, so its entry retains only the
+existing portfolio summary. Regression results are explicitly labelled as small
+synthetic evaluations, not production accuracy.
+
+### Local checks and publishing
+
+```powershell
+npm ci
+npm run dev
+npm run build
+npm run lint
+npm run deploy
+```
+
+The existing Pages source is the `gh-pages` branch. `npm run deploy` publishes the
+built `dist/` directory there; commit source changes to `main` separately. New
+assets use `import.meta.env.BASE_URL` so images resolve under `/portfolio/`.
+GitHub Pages serves this portfolio; it does not run SupportFlow's FastAPI/Ollama
+backend.

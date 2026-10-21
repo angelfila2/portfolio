@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { Github, Linkedin, Mail } from "lucide-react";
 import avatar from "../assets/portfolio.png";
 
@@ -11,7 +12,11 @@ const Hero = () => {
     // Exact same intro timing
     const t1 = setTimeout(() => setShowHey(true), 200);
     const t2 = setTimeout(() => setShowWave(true), 700);
-    const t3 = setTimeout(() => setShowHero(true), 1400);
+    const t3 = setTimeout(() => {
+      setShowHero(true);
+      setShowWave(false);
+      setShowHey(false);
+    }, 1400);
 
     return () => {
       clearTimeout(t1);
@@ -20,13 +25,6 @@ const Hero = () => {
     };
   }, []);
 
-  // When hero shows, remove intro
-  useEffect(() => {
-    if (showHero) {
-      setShowWave(false);
-      setShowHey(false);
-    }
-  }, [showHero]);
 
   return (
     <section className="min-h-screen relative flex items-center justify-center">
@@ -90,19 +88,19 @@ const Hero = () => {
 
         {/* CTA */}
         <div className="flex flex-wrap gap-4 justify-center mb-12">
-          <a
-            href="#projects"
+          <Link
+            to="/" state={{ section: "projects" }}
             className="px-8 py-3 text-lg font-medium rounded-md bg-blue-600 text-white hover:bg-blue-700 transition"
           >
             View Projects
-          </a>
+          </Link>
 
-          <a
-            href="#contact"
+          <Link
+            to="/" state={{ section: "contact" }}
             className="px-8 py-3 text-lg font-medium rounded-md border border-slate-300 text-slate-800 hover:bg-slate-100 transition"
           >
             Get In Touch
-          </a>
+          </Link>
         </div>
 
         {/* Socials */}
