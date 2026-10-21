@@ -3,7 +3,7 @@ const supportImage = name => `${import.meta.env.BASE_URL}projects/supportflow/${
 // Keep project content here; all cards share one case-study page.
 export const projects = [{
   slug: "supportflow",
-  description: "SupportFlow is an AI-assisted helpdesk that helps sort incoming support tickets. Users can type a request or upload an email, and the system identifies the issue, assigns a severity and decides whether to suggest a FAQ-based reply or pass it to a person. The dashboard brings ticket history, AI assessments, human reviews and reporting together in one place.",
+  description: "SupportFlow is an AI-assisted helpdesk that helps sort incoming support tickets. Users can type a request or upload an email, and the system identifies the issue, assigns a severity and decides whether to suggest a FAQ-based reply or pass it to a person. The helpdesk brings priority badges, deadline dates, AI assessments and human reviews together in one workspace. Staff can record replies, update ticket status with a required note, and follow each change in a timeline. The AI suggests reply text; email delivery is not integrated.",
   title: "SupportFlow",
   category: "AI engineering / Full stack",
   summary: "AI-assisted ticket triage with grounded FAQ replies, critical-incident escalation and a human review workspace.",
@@ -14,7 +14,7 @@ export const projects = [{
   gallery: [{
     image: supportImage("inbox.png"),
     title: "One queue, clear next steps",
-    caption: "Search and filter tickets by category, processing state, priority and review status. Screenshots use an isolated sample database."
+    caption: "Search and filter tickets, compare colour-coded priorities and check SLA deadlines. All screenshots show synthetic tickets in an isolated demo database."
   }, {
     image: supportImage("intake.png"),
     title: "From request to AI triage",
@@ -22,14 +22,18 @@ export const projects = [{
   }, {
     image: supportImage("assessment.png"),
     title: "A decision you can inspect",
-    caption: "The request and suggested FAQ reply sit beside the AI assessment. Review, response notes and saved decision evidence remain available in ticket details."
+    caption: "Inspect the expandable AI assessment, copy the suggested reply and review the classification before recording a helpdesk update."
+  }, {
+    image: supportImage("workflow.png"),
+    title: "Keep every update in context",
+    caption: "Move tickets from Open to Responded states with a required note. The timeline keeps triage, review, response and status activity together."
   }, {
     image: supportImage("insights.png"),
     title: "See the whole queue",
-    caption: "Classification and routing insights aggregate the full database rather than just the visible page of tickets."
+    caption: "Switch between bar and pie charts for category and routing breakdowns. Reports cover the full ticket database, with synthetic demo values shown here."
   }],
-  features: [["FAQ-based replies", "Suggest replies using relevant guidance from the support knowledge base."], ["AI ticket triage", "Identify the type of issue and its severity to help decide the next step."], ["Automatic escalation", "Send critical incidents and requests the AI cannot safely answer to a person."], ["Manual and email entry", "Create a ticket by typing a request or uploading an email file."], ["Ticket history and retries", "Search and filter saved tickets, view earlier attempts and retry failed processing."], ["Human review", "Review AI decisions, correct classifications and record agent response notes."]],
-  workflow: ["Save the request", "Retrieve FAQ context", "Assess with the LLM", "Enforce routing policy", "Reply or escalate"]
+  features: [["Grounded reply suggestions", "Retrieve relevant FAQ guidance and suggest replies that a helpdesk user can copy."], ["Context-aware incident assessment", "Assess impact scope, availability and incident status with structured AI output, then apply severity and escalation rules."], ["Priorities and deadlines", "Distinguish SEV1 to SEV5 with colour-coded badges and see each ticket's SLA deadline."], ["Manual and email entry", "Type a single-issue request or upload an email through the same triage pipeline."], ["Review and response workflow", "Review AI classifications and record Responded statuses with a required update note."], ["Activity timeline", "Follow ticket creation, triage attempts, reviews and helpdesk status changes without losing earlier notes."], ["Flexible analytics", "Choose bar or pie charts for classification and routing breakdowns across saved tickets."]],
+  workflow: ["Save the request", "Retrieve FAQ context", "Assess incident facts", "Apply severity and routing rules", "Suggest a reply or escalate", "Record helpdesk updates"]
 }, {
   slug: "room-booking",
   description: "A room booking application inspired by the difficulties of managing reservations in a shared spreadsheet. It provides a structured way to manage room bookings, with backend validation to check for overlapping time slots and PostgreSQL to store reservation records.",
