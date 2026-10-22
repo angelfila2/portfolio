@@ -41,7 +41,7 @@ export default function ProjectPage() {
 
       <section className="project-detail-section" aria-labelledby="description-title">
         <h2 id="description-title">About the project</h2>
-        <p>{project.description}</p>
+        {project.description.split("\n\n").map(paragraph => <p key={paragraph}>{paragraph}</p>)}
       </section>
 
       <section className="project-detail-section" aria-labelledby="features-title">
