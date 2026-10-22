@@ -41,13 +41,8 @@ export default function ProjectPage() {
 
       <section className="project-detail-section" aria-labelledby="description-title">
         <h2 id="description-title">About the project</h2>
-        <div className={`project-story ${project.aboutHeadings ? "project-story--structured" : ""}`}>
-          {project.description.split("\n\n").map((paragraph, index) => (
-            <div className="project-story-block" key={paragraph}>
-              {project.aboutHeadings?.[index] && <h3>{project.aboutHeadings[index]}</h3>}
-              <p>{paragraph}</p>
-            </div>
-          ))}
+        <div className="project-story">
+          {project.description.split("\n\n").map(paragraph => <p key={paragraph}>{paragraph}</p>)}
         </div>
       </section>
 
